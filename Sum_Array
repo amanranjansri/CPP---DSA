@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int sum(int array[], int size)
+{
+    int add = 0;
+    for (int i = 0; i < size; i++)
+    {
+        add = add + array[i];
+    }
+    return add;
+}
+
+int main()
+{
+    int array[5] = {-1, 2, 3, 4, 5};
+    int ans = sum(array, 5);
+    cout << ans << endl;
+    return 0;
+}
