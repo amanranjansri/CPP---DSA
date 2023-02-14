@@ -1,0 +1,99 @@
+#include <iostream>
+using namespace std;
+
+class Node
+{
+public:
+    int data;
+    Node *next;
+
+    // constructor
+    Node(int data)
+    {
+        this->data = data;
+        this->next = NULL;
+    }
+};
+
+void insertathead(Node *&head, int data)
+{
+    // create new node
+    Node *temp = new Node(data);
+    temp->next = head;
+    head = temp;
+}
+
+void insertattail(Node *&tail, int data)
+{
+    // create a new node
+    Node *temp = new Node(data);
+    tail->next = temp;
+    tail = temp;
+}
+
+void insertatmiddle(Node *&head, Node *&tail, int position, int data)
+{
+    if (position == 1)
+    {
+        insertathead(head, data);
+        return;
+    }
+
+    Node *tempa = head;
+    int cnt = 1;
+
+    while (cnt < position - 1)
+    {
+        tempa = tempa->next;
+        cnt++;
+    }
+
+    if (tempa->next == NULL)
+    {
+        insertattail(tail, data);
+        return;
+    }
+
+    // create a new node
+    Node *node2 = new Node(data);
+    node2->next = tempa->next;
+    tempa->next = node2;
+}
+
+void print(Node *&head)
+{
+    Node *temps = head;
+
+    while (temps != NULL)
+    {
+        cout << temps->data << " ";
+        temps = temps->next;
+    }
+}
+
+int main()
+{
+    // create new node
+
+    Node *node1 = new Node(100);
+    Node *head = node1;
+    Node *tail = node1;
+
+    // insertathead(head, 90);
+    // print(head);
+    // cout << endl<< endl;
+
+    insertattail(tail, 110);
+    print(head);
+    cout << endl;
+
+    insertattail(tail, 120);
+    print(head);
+    cout << endl;
+
+    insertatmiddle(head, tail, 4, 105);
+    print(head);
+    cout << endl;
+
+    return 0;
+}
