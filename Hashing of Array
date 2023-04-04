@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int num;
+    cin >> num;
+    int arr[num];
+    for(int i =0; i<num; i++)
+    {
+        cin>>arr[i];
+    }
+    //precompute
+    int hash[13] = {0};
+    for(int i =0; i<num; i++)
+    {
+        hash[arr[i]] += 1;
+    }
+
+                            // ---->  for integer           ----> for bool
+                            /*
+                            inside main --> arr[10^6]       inside main --> arr[1e7]
+                            globally    --> arr[10^7]       globally    --> arr[1e8]
+                            */
+    int q;
+    cin>>q;
+    while(q--)
+    {
+        int nums;
+        cin>>nums;
+
+        //fetch method
+        cout<<hash[nums]<<" ";
+    }
+    return 0;
+}
